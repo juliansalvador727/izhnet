@@ -8,16 +8,16 @@ namespace izhnet
 {
 
 struct Params {
-    double V_m;
-    double U_m;
-    double V_th;
-    double I_e;
-    double V_min;
-    double a;
-    double b;
-    double c;
-    double d;
-    bool consistent_integration;
+    double V_m;     // membrane potential
+    double U_m;     // membrane potential recovery variable
+    double V_th;    // spike threshold
+    double I_e;     // constant input current (R=1)
+    double V_min;   // absolute lower value for the membrane potential
+    double a;       // describes time scale of recovery variable
+    double b;       // sensitivity of recovery variable
+    double c;       // after-spike reset value of V_m
+    double d;       // after-spike reset value of U_m
+    bool consistent_integration;    // Use of standard integration technique
 };
 
 inline Params default_params() 
