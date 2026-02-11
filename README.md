@@ -1,6 +1,6 @@
 # izhnet
 
-izhnet is an implementation of the **Izhikevich spiking neuron model**, a computationally efficient neuron model capable of reproducing a wide range of biologically observed spiking and bursting behaviors.
+izhnet is an implementation of the Izhikevich spiking neuron model, a computationally efficient neuron model capable of reproducing a wide range of biologically observed spiking and bursting behaviors.
 
 All voltages are expressed in millivolts (mV), time in milliseconds (ms), and currents in arbitrary units (with membrane resistance normalized to 1).
 
