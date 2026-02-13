@@ -11,11 +11,11 @@ option(IZHNET_BUILD_TESTS "Build izhnet tests" ON)
 
 # ---- Library ----
 add_library(izhnet STATIC
-  src/model/izhikevich.cpp
-  src/network/network.cpp
-  src/sim/simulator.cpp
-  src/io/spike_logger.cpp
-  src/analysis/metrics.cpp
+  include/izhnet/model/izhikevich.cpp
+  include/izhnet/network/network.cpp
+  include/izhnet/sim/simulator.cpp
+  include/izhnet/io/spike_logger.cpp
+  include/izhnet/analysis/metrics.cpp
 )
 
 target_include_directories(izhnet

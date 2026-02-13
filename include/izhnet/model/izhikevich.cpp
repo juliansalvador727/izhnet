@@ -9,20 +9,27 @@ static inline double du_dt(const IzhParams& p, double V, double U) {return p.a *
 
 bool step_izhikevich(double& V, double& U, double I, double dt_ms, const IzhParams& p)
 {
-    bool spiked{ false };
-    // gotta set this up fr
     if (p.consistent_integration) {
-        // dont use nest
+        // Standard explicit Euler integration.
+        const double dV = dv_dt(V, U, I);
+        const double dU = du_dt(p, V, U);
+        V += dt_ms * dV;
+        U += dt_ms * dU;
     } else {
-        // use nest
+        // Published scheme: two V half-steps, then U from updated V.
+        V += 0.5 * dt_ms * dv_dt(V, U, I);
+        V += 0.5 * dt_ms * dv_dt(V, U, I);
+        U += dt_ms * du_dt(p, V, U);
     }
 
-    (void)I;
-    (void)dt_ms;
-    (void)p;
     V = std::max(V, p.V_min);
+    if (V >= p.V_th) {
+        V = p.c;
+        U += p.d;
+        return true;
+    }
+
     return false;
 }
 
 }
-
